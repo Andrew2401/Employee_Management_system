@@ -1,0 +1,20 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.table {
+    margin-top: 20px;
+}
+
+.btn-primary {
+    margin-top: 20px;
+}
+
+.btn-warning,
+.btn-danger {
+    margin-right: 5px;
+}

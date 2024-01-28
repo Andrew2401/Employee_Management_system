@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+
+
+    <div class="container mt-5">
+        <h2>Home</h2>
+        {% if employees %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for employee in employees %}
+                        <tr>
+                            <td>{{ employee[0] }}</td>
+                            <td>{{ employee[1] }}</td>
+                            <td>{{ employee[2] }}</td>
+                            <td>{{ employee[3] }}</td>
+                            <td>
+                                <a href="{{ url_for('update_employee', employee_id=employee[0]) }}" class="btn btn-warning btn-sm">Update</a>
+                                <a href="{{ url_for('delete_employee', employee_id=employee[0]) }}" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="{{ url_for('add_employee') }}" class="btn btn-primary">Add Employee</a>
+        {% else %}
+            <p>No employees available.</p>
+        {% endif %}
+        <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+    </div>
+
+</body>
+</html>
